@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:fitsSystemWindows="true"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp">
+
+    <TextView
+        android:id="@+id/tyLeftText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="?selectableItemBackground"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:padding="@dimen/TyToolbar_left_right_Padding"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/TyLeftTextSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tyMainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="MainTitle"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/TyMainTilteTextSize"
+        app:layout_constraintBottom_toTopOf="@+id/tySubtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tySubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SubTitle"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/TySubTilteTextSize"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tyMainTitle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tyMainTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tyMainTitle" />
+
+
+    <TextView
+        android:id="@+id/tyRightText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="?selectableItemBackground"
+        android:gravity="center"
+        android:padding="@dimen/TyToolbar_left_right_Padding"
+        android:text="确认"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/TyRightTextSize"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tySecondRightText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tySecondRightText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="?selectableItemBackground"
+        android:gravity="center"
+        android:padding="@dimen/TyToolbar_left_right_Padding"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/TyRightTextSize"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

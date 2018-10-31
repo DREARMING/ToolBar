@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <attr name="toolbarMainTitle" format="string|reference"/>
+    <attr name="toolbarSubTitle" format="string|reference"/>
+    <attr name="toolbarLeftDrawable" format="reference" />
+    <attr name="toolbarRightText" format="string"/>
+    <attr name="toolbarSecondRightText" format="string"/>
+    <attr name="toolbarSecondDrawable" format="reference" />
+    <attr name="toolbarBackground" format="color" />
+    <attr name="toolbarRightDrawable" format="reference" />
+
+
+    <declare-styleable name="TYToolBar">
+        <attr name="toolbarMainTitle"/>
+        <attr name="toolbarSubTitle"/>
+        <attr name="toolbarLeftDrawable"/>
+        <attr name="toolbarRightText"/>
+        <attr name="toolbarSecondDrawable"/>
+        <attr name="toolbarRightDrawable"/>
+        <attr name="toolbarBackground"/>
+        <attr name="toolbarSecondRightText"/>
+    </declare-styleable>
+
+
+</resources>

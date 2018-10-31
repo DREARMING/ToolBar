@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // ToolBar
+    <dimen name="TyLeftTextSize">18sp</dimen>
+    <dimen name="TyRightTextSize">18sp</dimen>
+    <dimen name="TyRightTextMarginRight">10dp</dimen>
+    <dimen name="TyMainTilteTextSize">18sp</dimen>
+    <dimen name="TySubTilteTextSize">16sp</dimen>
+    <dimen name="TyToolbar_left_right_Padding">10dp</dimen>
+</resources>
