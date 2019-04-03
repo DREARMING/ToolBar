@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mvcoder.tytoolbar.TYSegmentToolBar;
+import com.mvcoder.tytoolbar.flycotablayout.listener.OnTabSelectListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initToolbar() {
         tyToolBar.setSegmentTabData(titles);
-        tyToolBar.setOnTabSelectListener(new com.flyco.tablayout.listener.OnTabSelectListener() {
+        tyToolBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int i) {
                 showToast("select tab :" + i);

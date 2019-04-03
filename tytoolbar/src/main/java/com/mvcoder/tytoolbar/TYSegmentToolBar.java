@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.flyco.tablayout.SegmentTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.mvcoder.tytoolbar.flycotablayout.SegmentTabLayout;
+import com.mvcoder.tytoolbar.flycotablayout.listener.OnTabSelectListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

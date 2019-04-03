@@ -1,4 +1,4 @@
-package com.flyco.tablayout.listener;
+package com.mvcoder.tytoolbar.flycotablayout.listener;
 
 public interface OnTabSelectListener {
     void onTabSelect(int position);
