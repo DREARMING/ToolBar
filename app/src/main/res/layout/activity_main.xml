@@ -24,11 +24,31 @@
         app:toolbarBackground="@color/toolbarBgColor"
         app:toolbarLeftText="场景"
         app:toolbarRightText="地点"
+        app:toolbarMainTitle="首页"
         app:toolbarSLIndicatorColor="@color/toolbarIndicatorColor"
         app:toolbarSLStrokeColor="@color/toolbarIndicatorColor"
         app:toolbarSLSelectTextColor="@color/toolbarBgColor"
         app:toolbarSLUnSelectTextColor="@android:color/white"
         >
     </com.mvcoder.tytoolbar.TYSegmentToolBar>
+
+    <Button
+        android:id="@+id/btMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="main"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/btControl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="control"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btMain" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

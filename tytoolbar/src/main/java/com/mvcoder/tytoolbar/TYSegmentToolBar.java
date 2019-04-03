@@ -25,6 +25,7 @@ import androidx.appcompat.widget.Toolbar;
 public class TYSegmentToolBar extends Toolbar {
 
     private int backgroundColor;
+    private String mainTitle;
     private String rightText;
     private String leftText;
     private String secondRightStr;
@@ -32,6 +33,7 @@ public class TYSegmentToolBar extends Toolbar {
     private Drawable rightDrawable;
     private Drawable secondRightDrawable;
 
+    private TextView tyMainTitle;
     private TextView tyRightText;
     private TextView tyLeftText;
     private TextView secondRightText;
@@ -59,6 +61,7 @@ public class TYSegmentToolBar extends Toolbar {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TYSegmentToolBar, defStyleAttr, 0);
         int n = a.getIndexCount();
         backgroundColor = getResources().getColor(R.color.colorPrimary);
+        mainTitle = "";
         for(int i = 0; i<n; i++){
             int index = a.getIndex(i);
             if(index == R.styleable.TYToolBar_toolbarBackground){
@@ -90,6 +93,8 @@ public class TYSegmentToolBar extends Toolbar {
             }else if(index == R.styleable.TYToolBar_toolbarSLStrokeColor){
                 int defColor =getResources().getColor(R.color.colorAccent);
                 dividerColor = a.getColor(index, defColor);
+            }else if(index == R.styleable.TYToolBar_toolbarMainTitle){
+                mainTitle = a.getString(index);
             }
         }
         a.recycle();
@@ -98,11 +103,17 @@ public class TYSegmentToolBar extends Toolbar {
 
     private void initView(Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.view_tysegmenttoolbar, this);
+        tyMainTitle = view.findViewById(R.id.tyMainTitle);
         tyLeftText = view.findViewById(R.id.tyLeftText);
         tyRightText = view.findViewById(R.id.tyRightText);
         secondRightText = view.findViewById(R.id.tySecondRightText);
         segmentTabLayout = view.findViewById(R.id.tySegmentTabLayout);
 
+        tyMainTitle.setText(mainTitle);
+        if(!TextUtils.isEmpty(mainTitle)){
+            tyMainTitle.setVisibility(VISIBLE);
+            setMode(1);
+        }
 
         if(!TextUtils.isEmpty(leftText)){
             tyLeftText.setText(leftText);
@@ -192,6 +203,21 @@ public class TYSegmentToolBar extends Toolbar {
         });
     }
 
+    /**
+     * mode == 1 时显示MainTitle
+     * mode == 2 时显示 SegmentTabLayout
+     * @param mode
+     */
+    public void setMode(int mode){
+        tyMainTitle.setVisibility(mode == 1?View.VISIBLE:View.GONE);
+        segmentTabLayout.setVisibility(mode == 2?View.VISIBLE:View.GONE);
+    }
+
+    public void setTyMainTitle(String mainTitle) {
+        tyMainTitle.setVisibility(VISIBLE);
+        tyMainTitle.setText(mainTitle);
+    }
+
     public void setOnTabSelectListener(@NonNull OnTabSelectListener listener){
         this.onTabSelectListener = listener;
     }
@@ -246,6 +272,10 @@ public class TYSegmentToolBar extends Toolbar {
 
     public void setLeftListener(OnClickListener listener){
         this.leftListener = listener;
+    }
+
+    public void setMainTitleColor(int color){
+        tyMainTitle.setTextColor(color);
     }
 
     public void setLeftText(String leftText){

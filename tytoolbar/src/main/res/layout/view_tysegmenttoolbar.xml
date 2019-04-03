@@ -35,8 +35,27 @@
         app:layout_constraintTop_toBottomOf="parent"
         app:tl_textBold="BOTH"
         app:tl_textsize="16sp"
+        android:visibility="gone"
         app:tl_bar_stroke_color="@color/toolbarSlStrokeColor"
         app:tl_indicator_corner_radius="@dimen/TYToolbar_segment_tab_layout_radius" />
+
+    <TextView
+        android:id="@+id/tyMainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="MainTitle"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/TyMainTilteTextSize"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
 
     <TextView
