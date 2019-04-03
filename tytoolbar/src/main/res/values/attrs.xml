@@ -46,4 +46,25 @@
     </declare-styleable>
 
 
+    <declare-styleable name="TYSegmentToolBar">
+        <attr name="toolbarMainTitle"/>
+        <attr name="toolbarSubTitle"/>
+        <attr name="toolbarLeftDrawable"/>
+        <attr name="toolbarRightText"/>
+        <attr name="toolbarLeftText"/>
+        <attr name="toolbarSecondDrawable"/>
+        <attr name="toolbarRightDrawable"/>
+        <attr name="toolbarBackground"/>
+        <attr name="toolbarSecondRightText"/>
+
+        <attr name="toolbarSLIndicatorColor"/>
+        <attr name="toolbarSLStrokeColor"/>
+        <attr name="toolbarSLSelectTextColor"/>
+        <attr name="toolbarSLUnSelectTextColor"/>
+        <!--<attr name="toolbarSLWidth"/>
+        <attr name="toolbarSLHeight"/>
+        <attr name="toolbarSLRadius"/>
+        <attr name="toolbarSLTextSize"/>-->
+    </declare-styleable>
+
 </resources>

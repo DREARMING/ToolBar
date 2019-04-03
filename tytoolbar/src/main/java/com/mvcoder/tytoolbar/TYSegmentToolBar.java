@@ -56,7 +56,7 @@ public class TYSegmentToolBar extends Toolbar {
 
     public TYSegmentToolBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TYToolBar, defStyleAttr, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TYSegmentToolBar, defStyleAttr, 0);
         int n = a.getIndexCount();
         backgroundColor = getResources().getColor(R.color.colorPrimary);
         for(int i = 0; i<n; i++){
