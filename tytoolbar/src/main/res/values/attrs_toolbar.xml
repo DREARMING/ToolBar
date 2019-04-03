@@ -7,10 +7,21 @@
     <attr name="toolbarSubTitle" format="string|reference"/>
     <attr name="toolbarLeftDrawable" format="reference" />
     <attr name="toolbarRightText" format="string"/>
+    <attr name="toolbarLeftText" format="string"/>
     <attr name="toolbarSecondRightText" format="string"/>
     <attr name="toolbarSecondDrawable" format="reference" />
     <attr name="toolbarBackground" format="color" />
     <attr name="toolbarRightDrawable" format="reference" />
+
+
+    <attr name="toolbarSLIndicatorColor" format="color" />
+    <attr name="toolbarSLStrokeColor" format="color" />
+    <attr name="toolbarSLSelectTextColor" format="color" />
+    <attr name="toolbarSLUnSelectTextColor" format="color" />
+    <!--<attr name="toolbarSLWidth" format="dimension" />
+    <attr name="toolbarSLHeight" format="dimension" />
+    <attr name="toolbarSLRadius" format="dimension" />
+    <attr name="toolbarSLTextSize" format="dimension" />-->
 
 
     <declare-styleable name="TYToolBar">
@@ -18,10 +29,20 @@
         <attr name="toolbarSubTitle"/>
         <attr name="toolbarLeftDrawable"/>
         <attr name="toolbarRightText"/>
+        <attr name="toolbarLeftText"/>
         <attr name="toolbarSecondDrawable"/>
         <attr name="toolbarRightDrawable"/>
         <attr name="toolbarBackground"/>
         <attr name="toolbarSecondRightText"/>
+
+        <attr name="toolbarSLIndicatorColor"/>
+        <attr name="toolbarSLStrokeColor"/>
+        <attr name="toolbarSLSelectTextColor"/>
+        <attr name="toolbarSLUnSelectTextColor"/>
+        <!--<attr name="toolbarSLWidth"/>
+        <attr name="toolbarSLHeight"/>
+        <attr name="toolbarSLRadius"/>
+        <attr name="toolbarSLTextSize"/>-->
     </declare-styleable>
 
 

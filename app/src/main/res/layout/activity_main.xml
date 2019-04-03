@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <com.mvcoder.tytoolbar.TYToolBar
+    <!--<com.mvcoder.tytoolbar.TYToolBar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +15,20 @@
         app:toolbarSecondDrawable="@mipmap/toolbar_ic_back"
         app:toolbarLeftDrawable="@mipmap/toolbar_ic_back"
         >
-    </com.mvcoder.tytoolbar.TYToolBar>
+    </com.mvcoder.tytoolbar.TYToolBar>-->
 
-</android.support.constraint.ConstraintLayout>
+    <com.mvcoder.tytoolbar.TYSegmentToolBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:toolbarBackground="@color/toolbarBgColor"
+        app:toolbarLeftText="场景"
+        app:toolbarRightText="地点"
+        app:toolbarSLIndicatorColor="@color/toolbarIndicatorColor"
+        app:toolbarSLStrokeColor="@color/toolbarIndicatorColor"
+        app:toolbarSLSelectTextColor="@color/toolbarBgColor"
+        app:toolbarSLUnSelectTextColor="@android:color/white"
+        >
+    </com.mvcoder.tytoolbar.TYSegmentToolBar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,4 +7,9 @@
     <dimen name="TyMainTilteTextSize">18sp</dimen>
     <dimen name="TySubTilteTextSize">16sp</dimen>
     <dimen name="TyToolbar_left_right_Padding">10dp</dimen>
+
+    <dimen name="TYToolbar_segment_tab_layout_width">150dp</dimen>
+    <dimen name="TYToolbar_segment_tab_layout_height">30dp</dimen>
+    <dimen name="TYToolbar_segment_tab_layout_radius">15dp</dimen>
+
 </resources>

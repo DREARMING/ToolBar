@@ -2,6 +2,7 @@ package com.mvcoder.tytoolbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -9,6 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.flyco.tablayout.SegmentTabLayout;
+import com.flyco.tablayout.listener.OnTabSelectListener;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
@@ -17,11 +22,9 @@ import androidx.appcompat.widget.Toolbar;
  * Created by mvcoder on 2017/8/7.
  */
 
-public class TYToolBar extends Toolbar {
+public class TYSegmentToolBar extends Toolbar {
 
     private int backgroundColor;
-    private String mainTitle;
-    private String subTitle;
     private String rightText;
     private String leftText;
     private String secondRightStr;
@@ -29,38 +32,37 @@ public class TYToolBar extends Toolbar {
     private Drawable rightDrawable;
     private Drawable secondRightDrawable;
 
-    private TextView tyMainTitle;
-    private TextView tySubTitle;
     private TextView tyRightText;
     private TextView tyLeftText;
     private TextView secondRightText;
+    private SegmentTabLayout segmentTabLayout;
     private OnClickListener righListener;
     private OnClickListener leftListener;
     private OnClickListener secondRightListener;
+    private OnTabSelectListener onTabSelectListener;
 
-    public TYToolBar(Context context) {
+    private int indicatorColor;
+    private int selectTextColor;
+    private int unSelectTextColor;
+    private int dividerColor;
+
+    public TYSegmentToolBar(Context context) {
         this(context, null);
     }
 
-    public TYToolBar(Context context, @Nullable AttributeSet attrs) {
+    public TYSegmentToolBar(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public TYToolBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public TYSegmentToolBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TYToolBar, defStyleAttr, 0);
         int n = a.getIndexCount();
         backgroundColor = getResources().getColor(R.color.colorPrimary);
-        mainTitle = "";
-        subTitle = "";
         for(int i = 0; i<n; i++){
             int index = a.getIndex(i);
             if(index == R.styleable.TYToolBar_toolbarBackground){
                 backgroundColor = a.getColor(index, backgroundColor);
-            }else if(index == R.styleable.TYToolBar_toolbarMainTitle){
-                mainTitle = a.getString(index);
-            }else if(index == R.styleable.TYToolBar_toolbarSubTitle){
-                subTitle = a.getString(index);
             }else if(index == R.styleable.TYToolBar_toolbarRightText){
                 rightText = a.getString(index);
             }else if(index == R.styleable.TYToolBar_toolbarLeftDrawable){
@@ -76,6 +78,18 @@ public class TYToolBar extends Toolbar {
                 rightDrawable.setBounds(0,0,rightDrawable.getIntrinsicWidth(),rightDrawable.getIntrinsicHeight());
             }else if(index == R.styleable.TYToolBar_toolbarLeftText){
                 leftText = a.getString(index);
+            }else if(index == R.styleable.TYToolBar_toolbarSLIndicatorColor){
+                int defColor =getResources().getColor(R.color.colorAccent);
+                indicatorColor = a.getColor(index, defColor);
+            }else if(index == R.styleable.TYToolBar_toolbarSLSelectTextColor){
+                int defColor = getResources().getColor(R.color.colorPrimary);
+                selectTextColor = a.getColor(index, defColor);
+            }else if(index == R.styleable.TYToolBar_toolbarSLUnSelectTextColor){
+                int defColor = Color.BLACK;
+                unSelectTextColor = a.getColor(index, defColor);
+            }else if(index == R.styleable.TYToolBar_toolbarSLStrokeColor){
+                int defColor =getResources().getColor(R.color.colorAccent);
+                dividerColor = a.getColor(index, defColor);
             }
         }
         a.recycle();
@@ -83,17 +97,12 @@ public class TYToolBar extends Toolbar {
     }
 
     private void initView(Context context) {
-        View view = LayoutInflater.from(context).inflate(R.layout.view_tytoolbar, this);
-        tyMainTitle = view.findViewById(R.id.tyMainTitle);
-        tySubTitle = view.findViewById(R.id.tySubtitle);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_tysegmenttoolbar, this);
         tyLeftText = view.findViewById(R.id.tyLeftText);
         tyRightText = view.findViewById(R.id.tyRightText);
         secondRightText = view.findViewById(R.id.tySecondRightText);
+        segmentTabLayout = view.findViewById(R.id.tySegmentTabLayout);
 
-        tyMainTitle.setText(mainTitle);
-        if(!TextUtils.isEmpty(subTitle)){
-            setTySubTitle(subTitle);
-        }
 
         if(!TextUtils.isEmpty(leftText)){
             tyLeftText.setText(leftText);
@@ -114,6 +123,27 @@ public class TYToolBar extends Toolbar {
         }
 
         setBackgroundColor(backgroundColor);
+
+        segmentTabLayout.setIndicatorColor(indicatorColor);
+        segmentTabLayout.setTextSelectColor(selectTextColor);
+        segmentTabLayout.setTextUnselectColor(unSelectTextColor);
+        segmentTabLayout.setDividerColor(dividerColor);
+
+        segmentTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int i) {
+                if(onTabSelectListener != null){
+                    onTabSelectListener.onTabSelect(i);
+                }
+            }
+
+            @Override
+            public void onTabReselect(int i) {
+                if(onTabSelectListener != null){
+                    onTabSelectListener.onTabReselect(i);
+                }
+            }
+        });
 
         if(leftDrawable != null){
             tyLeftText.setCompoundDrawables(leftDrawable,null,null,null);
@@ -162,15 +192,49 @@ public class TYToolBar extends Toolbar {
         });
     }
 
-
-    public void setTyMainTitle(String mainTitle) {
-        tyMainTitle.setText(mainTitle);
+    public void setOnTabSelectListener(@NonNull OnTabSelectListener listener){
+        this.onTabSelectListener = listener;
     }
 
-    public void setTySubTitle(String subTitle) {
-        if(TextUtils.isEmpty(subTitle)) return;
-        tySubTitle.setText(subTitle);
-        tySubTitle.setVisibility(View.VISIBLE);
+    public void setSegmentTabData(@NonNull String[] titles){
+        segmentTabLayout.setTabData(titles);
+    }
+
+
+    public int getIndicatorColor() {
+        return indicatorColor;
+    }
+
+    public void setIndicatorColor(int indicatorColor) {
+        this.indicatorColor = indicatorColor;
+        segmentTabLayout.setIndicatorColor(indicatorColor);
+    }
+
+    public int getSelectTextColor() {
+        return selectTextColor;
+    }
+
+    public void setSelectTextColor(int selectTextColor) {
+        this.selectTextColor = selectTextColor;
+        segmentTabLayout.setTextSelectColor(indicatorColor);
+    }
+
+    public int getUnSelectTextColor() {
+        return unSelectTextColor;
+    }
+
+    public void setUnSelectTextColor(int unSelectTextColor) {
+        this.unSelectTextColor = unSelectTextColor;
+        segmentTabLayout.setTextUnselectColor(unSelectTextColor);
+    }
+
+    public int getDividerColor() {
+        return dividerColor;
+    }
+
+    public void setDividerColor(int dividerColor) {
+        this.dividerColor = dividerColor;
+        segmentTabLayout.setDividerColor(dividerColor);
     }
 
     public void setTyRightText(String rightText, OnClickListener listener) {
@@ -182,7 +246,6 @@ public class TYToolBar extends Toolbar {
 
     public void setLeftListener(OnClickListener listener){
         this.leftListener = listener;
-        tyLeftText.setText("");
     }
 
     public void setLeftText(String leftText){
@@ -192,6 +255,7 @@ public class TYToolBar extends Toolbar {
 
     public void setTyLeftDrawable(int resourceId){
         Drawable leftDrawable  = getContext().getResources().getDrawable(resourceId);
+        tyLeftText.setText("");
         leftDrawable.setBounds(0,0,leftDrawable.getIntrinsicWidth(),leftDrawable.getIntrinsicHeight());
         tyLeftText.setCompoundDrawables(leftDrawable,null,null,null);
     }

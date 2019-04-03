@@ -1,15 +1,18 @@
 package com.mvcoder.toolbar;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mvcoder.tytoolbar.TYToolBar;
+import com.mvcoder.tytoolbar.TYSegmentToolBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TYToolBar tyToolBar;
+    private TYSegmentToolBar tyToolBar;
+
+    private String[] titles = new String[]{"单控","集控"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
+        tyToolBar.setSegmentTabData(titles);
+        tyToolBar.setOnTabSelectListener(new com.flyco.tablayout.listener.OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int i) {
+                showToast("select tab :" + i);
+            }
+
+            @Override
+            public void onTabReselect(int i) {
+
+            }
+        });
         tyToolBar.setLeftListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
